@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="me.oldjii.express">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <application
+        android:name="me.oldjii.express.application.ExpressApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name="com.google.zxing.activity.CaptureActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name="me.oldjii.express.activity.ExpressActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="me.oldjii.express.activity.CompanyActivity"
+            android:label="@string/title_activity_choose_com"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="me.oldjii.express.activity.ResultActivity"
+            android:label="@string/title_activity_result"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="me.oldjii.express.activity.HistoryActivity"
+            android:label="@string/title_activity_history"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="me.oldjii.express.activity.QRCodeActivity"
+            android:label="@string/title_activity_qrcode"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="me.oldjii.express.activity.AboutActivity"
+            android:label="@string/about"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="me.oldjii.express.activity.SearchActivity"
+            android:label="@string/title_activity_search"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="me.oldjii.express.activity.DeliverActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:hardwareAccelerated="true"
+            android:label="@string/title_activity_deliver"
+            android:screenOrientation="portrait" />
+    </application>
+</manifest>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/action_history"
+            android:icon="@drawable/ic_menu_history"
+            android:title="@string/title_activity_history" />
+        <item
+            android:id="@+id/action_qrcode"
+            android:icon="@drawable/ic_menu_qrcode"
+            android:title="@string/title_activity_qrcode" />
+    </group>
+
+    <item android:title="@string/more">
+        <menu>
+            <item
+                android:id="@+id/action_share"
+                android:title="@string/share" />
+            <item
+                android:id="@+id/action_about"
+                android:title="@string/about" />
+        </menu>
+    </item>
+
+</menu>
