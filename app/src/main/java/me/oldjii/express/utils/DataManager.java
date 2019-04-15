@@ -15,7 +15,7 @@ import me.oldjii.express.database.History;
 import me.oldjii.express.model.SearchInfo;
 
 /**
- * @author wcy
+ * Created by oldjii on 2019/4
  */
 public class DataManager {
     private Dao<History, String> mHistoryDao;
