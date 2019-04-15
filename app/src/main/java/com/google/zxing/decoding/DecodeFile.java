@@ -17,6 +17,10 @@ import com.google.zxing.common.HybridBinarizer;
 
 import java.util.Hashtable;
 
+/**
+ * 在官方的ZXing目录下没有搜索到该类
+ */
+
 public class DecodeFile {
 
     @SuppressLint("StaticFieldLeak")

@@ -19,7 +19,6 @@ import me.oldjii.express.utils.binding.ViewBinder;
 
 public abstract class BaseActivity extends AppCompatActivity {
     protected Handler handler;
-    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,26 +68,5 @@ public abstract class BaseActivity extends AppCompatActivity {
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         PermissionReq.onRequestPermissionsResult(requestCode, permissions, grantResults);
-    }
-
-    public void showProgress() {
-        showProgress(getString(R.string.loading));
-    }
-
-    public void showProgress(String message) {
-        if (progressDialog == null) {
-            progressDialog = new ProgressDialog(this);
-            progressDialog.setCancelable(false);
-        }
-        progressDialog.setMessage(message);
-        if (!progressDialog.isShowing()) {
-            progressDialog.show();
-        }
-    }
-
-    public void cancelProgress() {
-        if (progressDialog != null && progressDialog.isShowing()) {
-            progressDialog.cancel();
-        }
     }
 }

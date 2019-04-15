@@ -6,5 +6,5 @@ package me.oldjii.express.constants;
 public interface Extras {
     String SEARCH_INFO = "search_info";
     String SCAN_RESULT = "scan_result";
-    String BARCODE = "barcode";
+    String BARCODE = "barcode";     //条形码
 }

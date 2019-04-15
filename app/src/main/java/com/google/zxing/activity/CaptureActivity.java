@@ -94,6 +94,10 @@ public class CaptureActivity extends AppCompatActivity implements Callback, OnCl
         ivAlbum.setOnClickListener(this);
     }
 
+    /**
+     * Pause的时候就取消CaptureActivity的Handler，重新Resume了就再生成一个
+     */
+
     @Override
     protected void onResume() {
         super.onResume();
@@ -270,6 +274,7 @@ public class CaptureActivity extends AppCompatActivity implements Callback, OnCl
         });
     }
 
+    //TODO:这个可能是自定义的
     private void handleScanResult(final String result) {
         if (isBarcode) {
             Intent data = new Intent();
@@ -280,8 +285,8 @@ public class CaptureActivity extends AppCompatActivity implements Callback, OnCl
             View view = LayoutInflater.from(this).inflate(R.layout.dialog_capture, null);
             TextView tvResult = (TextView) view.findViewById(R.id.tv_result);
             tvResult.setText(result);
-            tvResult.setAutoLinkMask(Linkify.ALL);
-            tvResult.setMovementMethod(LinkMovementMethod.getInstance());
+            tvResult.setAutoLinkMask(Linkify.ALL);  //自动检测，如果是url，则改变颜色并点击跳转浏览器
+            tvResult.setMovementMethod(LinkMovementMethod.getInstance());   //要想url生效必须调用这个，像其他点击号码打电话也是一样，虽然不知道为什么
             new AlertDialog.Builder(this)
                     .setTitle("扫描结果")
                     .setView(view)
@@ -289,8 +294,8 @@ public class CaptureActivity extends AppCompatActivity implements Callback, OnCl
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             dialog.cancel();
-                            ClipboardManager cmb = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
-                            cmb.setText(result);
+                            ClipboardManager cmb = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);  //
+                            cmb.setText(result);                                                            //就是这两行代码实现了将result中的信息复制到了系统的剪切板
                             SnackbarUtils.show(CaptureActivity.this, "复制成功");
                         }
                     })

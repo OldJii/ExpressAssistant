@@ -39,8 +39,6 @@ public class ExpressActivity extends BaseActivity implements OnClickListener, Na
     private NavigationView navigationView;
     @Bind(R.id.tv_search)
     private TextView tvSearch;
-    @Bind(R.id.tv_post)
-    private TextView tvPost;
     @Bind(R.id.tv_sweep)
     private TextView tvSweep;
     @Bind(R.id.rv_un_check)
@@ -65,7 +63,6 @@ public class ExpressActivity extends BaseActivity implements OnClickListener, Na
 
         navigationView.setNavigationItemSelectedListener(this);
         tvSearch.setOnClickListener(this);
-        tvPost.setOnClickListener(this);
         tvSweep.setOnClickListener(this);
 
         adapter = new RAdapter<>(unCheckList, new RSingleDelegate<>(HistoryViewHolder.class));
@@ -94,9 +91,6 @@ public class ExpressActivity extends BaseActivity implements OnClickListener, Na
         switch (v.getId()) {
             case R.id.tv_search:
                 startActivity(new Intent(this, SearchActivity.class));
-                break;
-            case R.id.tv_post:
-                startActivity(new Intent(this, DeliverActivity.class));
                 break;
             case R.id.tv_sweep:
                 startCaptureActivity();
@@ -148,10 +142,6 @@ public class ExpressActivity extends BaseActivity implements OnClickListener, Na
         switch (item.getItemId()) {
             case R.id.action_history:
                 intent.setClass(this, HistoryActivity.class);
-                startActivity(intent);
-                return true;
-            case R.id.action_qrcode:
-                intent.setClass(this, QRCodeActivity.class);
                 startActivity(intent);
                 return true;
             case R.id.action_share:

@@ -41,6 +41,7 @@ final class DecodeThread extends Thread {
 
         hints = new Hashtable<>(3);
 
+        //支持解析的码的类型
         if (decodeFormats == null || decodeFormats.isEmpty()) {
             decodeFormats = new Vector<>();
             decodeFormats.addAll(DecodeFormatManager.ONE_D_FORMATS);
