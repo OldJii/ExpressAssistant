@@ -5,8 +5,7 @@
 这是一款超轻巧的查询快递的app，仅1M。<br>
 支持包含申通、中通、圆通、EMS等热门物流公司在内的全国近多家公司，支持扫码查询，智能识别快递公司。<br>
 
-## Project
-
+##项目
 ### 开源技术
 - ZXing、Volley、ormlite、Gson、Glide
 
@@ -41,13 +40,13 @@ public static void query(String type, String postId, final HttpCallback<SearchRe
 ## License
 
      Copyright (C) 2008 ZXing authors
-
+    
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
      You may obtain a copy of the License at
-
+    
           http://www.apache.org/licenses/LICENSE-2.0
-
+    
      Unless required by applicable law or agreed to in writing, software
      distributed under the License is distributed on an "AS IS" BASIS,
      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
