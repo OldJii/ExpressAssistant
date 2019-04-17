@@ -32,6 +32,8 @@ import me.oldjii.express.R;
 /**
  * This class handles all the messaging which comprises the state machine for
  * capture.
+ *
+ * 在这里面调用解码子线程
  */
 public final class CaptureActivityHandler extends Handler {
     private static final String TAG = "CaptureActivityHandler";

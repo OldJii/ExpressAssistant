@@ -33,7 +33,7 @@ final class DecodeThread extends Thread {
     private final CaptureActivityHandler captureHandler;
     private final Hashtable<DecodeHintType, Object> hints;
     private Handler handler;
-    private final CountDownLatch handlerInitLatch;
+    private final CountDownLatch handlerInitLatch;      //CountDownLatch是一个同步工具类，它允许一个或多个线程一直等待，直到其他线程的操作执行完后再执行
 
     DecodeThread(CaptureActivityHandler captureHandler, Vector<BarcodeFormat> decodeFormats, String characterSet) {
         this.captureHandler = captureHandler;
@@ -67,7 +67,7 @@ final class DecodeThread extends Thread {
 
     @Override
     public void run() {
-        Looper.prepare();
+        Looper.prepare();       //非主线程中要先prepare()
         handler = new DecodeHandler(captureHandler, hints);
         handlerInitLatch.countDown();
         Looper.loop();

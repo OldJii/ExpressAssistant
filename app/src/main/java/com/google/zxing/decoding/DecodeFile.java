@@ -19,6 +19,8 @@ import java.util.Hashtable;
 
 /**
  * 在官方的ZXing目录下没有搜索到该类
+ *
+ * 真正执行解码的类
  */
 
 public class DecodeFile {

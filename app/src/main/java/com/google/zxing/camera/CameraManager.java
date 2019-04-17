@@ -23,6 +23,9 @@ import android.hardware.Camera;
 import android.os.Handler;
 import android.util.Log;
 import android.view.SurfaceHolder;
+/**
+ * 唯一与Camera交谈的类
+ */
 
 /**
  * This object wraps the Camera service object and expects to be the only one
@@ -96,11 +99,11 @@ public final class CameraManager {
      */
     public void openDriver(SurfaceHolder holder) throws Exception {
         if (camera == null) {
-            camera = Camera.open();
+            camera = Camera.open(); //这里实现调用手机相机
             if (camera == null) {
                 throw new IllegalStateException("open camera failed");
             }
-            camera.setPreviewDisplay(holder);
+            camera.setPreviewDisplay(holder);   //设置camera的preview_layout
 
             if (!initialized) {
                 initialized = true;

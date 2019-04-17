@@ -80,15 +80,20 @@ public class CaptureActivity extends AppCompatActivity implements Callback, OnCl
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_capture);
 
-        isBarcode = getIntent().getBooleanExtra(Extras.BARCODE, false);
+        isBarcode = getIntent().getBooleanExtra(Extras.BARCODE, false); //上面start中发送，默认为false
 
+        //初始化解码类型
         initDecodeFormats();
+        //实现创建CameraManager，关键代码
         CameraManager.init(getApplicationContext());
         CameraManager.get().setBarcode(isBarcode);
 
+        //创建progressDialog
         progressDialog = new ProgressDialog(this);
 
+        //相当于findviewbyid()
         ViewBinder.bind(this);
+        //设置监听
         ivBack.setOnClickListener(this);
         ivFlashlight.setOnClickListener(this);
         ivAlbum.setOnClickListener(this);
@@ -101,15 +106,18 @@ public class CaptureActivity extends AppCompatActivity implements Callback, OnCl
     @Override
     protected void onResume() {
         super.onResume();
+        //创建surfaceView和surfaceHolder
         SurfaceView surfaceView = (SurfaceView) findViewById(R.id.preview_view);
         SurfaceHolder surfaceHolder = surfaceView.getHolder();
-        if (hasSurface) {
+        if (hasSurface) {   //默认false
+            //调用相机
             initCamera(surfaceHolder);
         } else {
             surfaceHolder.addCallback(this);
             surfaceHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
         }
 
+        //播放音效
         AudioManager audioManager = (AudioManager) getSystemService(AUDIO_SERVICE);
         playBeep = PLAY_BEEP && (audioManager.getRingerMode() == AudioManager.RINGER_MODE_NORMAL);
         initBeepSound();
@@ -119,9 +127,11 @@ public class CaptureActivity extends AppCompatActivity implements Callback, OnCl
     protected void onPause() {
         super.onPause();
         if (handler != null) {
+            //TODO：没看懂这里
             handler.quitSynchronously();
             handler = null;
         }
+        //关闭相机
         CameraManager.get().closeDriver();
     }
 
@@ -150,6 +160,9 @@ public class CaptureActivity extends AppCompatActivity implements Callback, OnCl
         }
     }
 
+    /**
+     * 初始化可以解码的码的类型
+     */
     private void initDecodeFormats() {
         decodeFormats.addAll(DecodeFormatManager.ONE_D_FORMATS);
         if (!isBarcode) {
@@ -246,35 +259,36 @@ public class CaptureActivity extends AppCompatActivity implements Callback, OnCl
 
     private void openAlbum() {
         Intent innerIntent = new Intent();
-        innerIntent.setAction(Intent.ACTION_PICK);
+        innerIntent.setAction(Intent.ACTION_PICK);      //ACTION_PICK - 是选取数据的意思
         innerIntent.setType("image/*");
-        startActivityForResult(innerIntent, REQUEST_ALBUM);
+        startActivityForResult(innerIntent, REQUEST_ALBUM);     //REQUEST_ALBUM为requestCode
     }
 
+    /**
+     * 解码
+     * @param uri   图片
+     */
     private void decodeFile(Uri uri) {
         showProgress();
         Hashtable<DecodeHintType, Object> hints = new Hashtable<>();
-        hints.put(DecodeHintType.POSSIBLE_FORMATS, decodeFormats);
-        hints.put(DecodeHintType.CHARACTER_SET, characterSet);
+        hints.put(DecodeHintType.POSSIBLE_FORMATS, decodeFormats);  //可解码的类型
+        hints.put(DecodeHintType.CHARACTER_SET, characterSet);      //指定解码时要使用的字符编码
 
-        DecodeFile.decodeFile(getContentResolver(), uri, hints, new com.google.zxing.activity.Callback<Result>() {
-            @Override
-            public void onEvent(Result result) {
-                cancelProgress();
-                if (result != null && !TextUtils.isEmpty(result.getText())) {
-                    handleScanResult(result.getText());
-                } else {
-                    new AlertDialog.Builder(CaptureActivity.this)
-                            .setTitle(R.string.tips)
-                            .setMessage(R.string.analyze_fail)
-                            .setPositiveButton(R.string.sure, null)
-                            .show();
-                }
+        DecodeFile.decodeFile(getContentResolver(), uri, hints, result -> {
+            cancelProgress();
+            if (result != null && !TextUtils.isEmpty(result.getText())) {
+                handleScanResult(result.getText());
+            } else {
+                new AlertDialog.Builder(CaptureActivity.this)
+                        .setTitle(R.string.tips)
+                        .setMessage(R.string.analyze_fail)
+                        .setPositiveButton(R.string.sure, null)
+                        .show();
             }
         });
     }
 
-    //TODO:这个可能是自定义的
+    //扫码成功后调用的方法、出现的弹出框
     private void handleScanResult(final String result) {
         if (isBarcode) {
             Intent data = new Intent();

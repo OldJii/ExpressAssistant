@@ -3,6 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <!--自定义Cature布局必须又这两个layout：SurfaceView、ViewfinderView-->
+    <!--实现提取手机相机的功能，具体实现在zxing中实现-->
     <SurfaceView
         android:id="@+id/preview_view"
         android:layout_width="match_parent"
@@ -13,6 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
+    <!--android:fitsSystemWindows - 用于实现“沉浸式状态栏”-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -21,6 +24,8 @@
         android:gravity="bottom"
         android:orientation="horizontal">
 
+        <!--android:scaleType - 以正常显示图片为目的的显示模式-->
+        <!--android:contentDescription - 服务于障碍人士的属性，点击时朗读信息-->
         <ImageView
             android:id="@+id/iv_back"
             android:layout_width="?android:attr/actionBarSize"
