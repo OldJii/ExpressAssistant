@@ -79,7 +79,7 @@ public class ResultActivity extends BaseActivity implements View.OnClickListener
         searchInfo = (SearchInfo) intent.getSerializableExtra(Extras.SEARCH_INFO);
         Glide.with(this)
                 .load(HttpClient.urlForLogo(searchInfo.getLogo()))
-                .dontAnimate()
+                .dontAnimate()      //如果不需要crossfade()的效果（平缓的图片的改变），则需要调用dontAnimate()
                 .placeholder(R.drawable.ic_default_logo)
                 .into(ivLogo);
         refreshSearchInfo();
