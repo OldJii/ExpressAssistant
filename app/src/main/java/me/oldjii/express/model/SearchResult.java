@@ -1,6 +1,3 @@
-/**
- * 2015-4-2
- */
 package me.oldjii.express.model;
 
 import com.google.gson.annotations.SerializedName;

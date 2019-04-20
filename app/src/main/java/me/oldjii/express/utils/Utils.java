@@ -1,6 +1,3 @@
-/**
- *
- */
 package me.oldjii.express.utils;
 
 import android.content.Context;

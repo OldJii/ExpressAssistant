@@ -28,7 +28,7 @@
     <string name="qrcode_save_success">二维码已保存至/SDCard/Pictures/%s</string>
     <string name="qrcode_no_sdcard">保存失败，SD卡不可用</string>
     <string name="qrcode_save_failure">保存失败</string>
-    <string name="share_content">我正在使用@快递助手！</string>
+    <string name="share_content">我正在使用@快递助手，你也快来试试吧！</string>
     <string name="analyze_fail">抱歉，未在图中发现条码！</string>
     <string name="remark">运单备注</string>
     <string name="about_project_url">https://github.com/OldJii</string>

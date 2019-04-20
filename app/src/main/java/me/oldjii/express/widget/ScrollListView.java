@@ -1,6 +1,3 @@
-/**
- * 2015-3-31
- */
 package me.oldjii.express.widget;
 
 import android.content.Context;

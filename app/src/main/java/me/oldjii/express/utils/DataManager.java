@@ -1,6 +1,3 @@
-/**
- * 2015-4-2
- */
 package me.oldjii.express.utils;
 
 import com.j256.ormlite.dao.Dao;
