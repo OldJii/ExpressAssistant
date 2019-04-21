@@ -56,6 +56,7 @@ final class DecodeThread extends Thread {
         }
     }
 
+    //无修饰符，返回一个Handler
     Handler getHandler() {
         try {
             handlerInitLatch.await();

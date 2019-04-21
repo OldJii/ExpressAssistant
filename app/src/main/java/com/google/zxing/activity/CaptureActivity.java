@@ -117,6 +117,9 @@ public class CaptureActivity extends AppCompatActivity implements Callback, OnCl
             surfaceHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
         }
 
+        /**
+         * getRingerMode()返回当前的铃声模式
+         */
         //播放音效
         AudioManager audioManager = (AudioManager) getSystemService(AUDIO_SERVICE);
         playBeep = PLAY_BEEP && (audioManager.getRingerMode() == AudioManager.RINGER_MODE_NORMAL);
@@ -192,11 +195,12 @@ public class CaptureActivity extends AppCompatActivity implements Callback, OnCl
         if (playBeep && mediaPlayer == null) {
             // The volume on STREAM_SYSTEM is not adjustable, and users found it too loud,
             // so we now play on the music stream.
-            setVolumeControlStream(AudioManager.STREAM_MUSIC);
+            setVolumeControlStream(AudioManager.STREAM_MUSIC);  //设置声音模式
             mediaPlayer = new MediaPlayer();
-            mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+            mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);   //设置声音模式
             mediaPlayer.setOnCompletionListener(beepListener);
 
+            //AssetManager中条目的文件描述符,可用于读取数据，以及文件中该条目数据的偏移量和长度。
             AssetFileDescriptor file = getResources().openRawResourceFd(R.raw.beep);
             try {
                 mediaPlayer.setDataSource(file.getFileDescriptor(), file.getStartOffset(), file.getLength());
@@ -211,7 +215,7 @@ public class CaptureActivity extends AppCompatActivity implements Callback, OnCl
 
     private void playBeepSoundAndVibrate() {
         if (playBeep && mediaPlayer != null) {
-            mediaPlayer.start();
+            mediaPlayer.start();                    ////播放beef音频文件
         }
         if (VIBRATE) {
             Vibrator vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);

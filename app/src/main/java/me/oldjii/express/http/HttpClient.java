@@ -26,6 +26,7 @@ public class HttpClient {
 
     private static RequestQueue mRequestQueue;
 
+    //信任所有https证书
     static {
         FakeX509TrustManager.allowAllSSL();
     }
