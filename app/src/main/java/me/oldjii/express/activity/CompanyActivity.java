@@ -28,6 +28,9 @@ import me.oldjii.express.widget.radapter.RAdapter;
 import me.oldjii.express.widget.radapter.RAdapterDelegate;
 import me.oldjii.express.widget.radapter.RViewHolder;
 
+/**
+ * 选择公司页面
+ */
 public class CompanyActivity extends BaseActivity implements IndexBar.OnIndexChangedListener {
     @Bind(R.id.rv_company)
     private RecyclerView rvCompany;
@@ -45,6 +48,8 @@ public class CompanyActivity extends BaseActivity implements IndexBar.OnIndexCha
         setContentView(R.layout.activity_company);
 
         readCompany();
+
+        //传入实体类 + viewholder
         adapter = new RAdapter<>(companyList, delegate);
         rvCompany.setLayoutManager(new LinearLayoutManager(this));
         rvCompany.setAdapter(adapter);
@@ -53,6 +58,7 @@ public class CompanyActivity extends BaseActivity implements IndexBar.OnIndexCha
         ibIndicator.setOnIndexChangedListener(this);
     }
 
+    //创建viewholder
     private RAdapterDelegate<CompanyEntity> delegate = new RAdapterDelegate<CompanyEntity>() {
         @Override
         public Class<? extends RViewHolder<CompanyEntity>> getViewHolderClass(int position) {
@@ -64,8 +70,10 @@ public class CompanyActivity extends BaseActivity implements IndexBar.OnIndexCha
         }
     };
 
+    //解析json文件转化为一个个CompanyEntity，并组合为companyList
     private void readCompany() {
         try {
+            //快递公司信息存放在assets目录下
             InputStream is = getAssets().open("company.json");
             int size = is.available();
             byte[] buffer = new byte[size];

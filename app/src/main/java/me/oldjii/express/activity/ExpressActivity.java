@@ -100,6 +100,7 @@ public class ExpressActivity extends BaseActivity implements OnClickListener, Na
         }
     }
 
+    //打开相机 / 动态申请权限
     private void startCaptureActivity() {
         PermissionReq.with(this)
                 .permissions(Manifest.permission.CAMERA)

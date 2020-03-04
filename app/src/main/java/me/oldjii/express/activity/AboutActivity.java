@@ -9,6 +9,10 @@ import android.preference.PreferenceFragment;
 import me.oldjii.express.BuildConfig;
 import me.oldjii.express.R;
 
+/**
+ * 关于页面Activity
+ *  - 关于页面Fragment
+ */
 public class AboutActivity extends BaseActivity {
 
     @Override
@@ -16,9 +20,14 @@ public class AboutActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
 
+        //将内层布局动态替换为Fragment
         getFragmentManager().beginTransaction().replace(R.id.ll_fragment_container, new AboutFragment()).commit();
     }
 
+    /**
+     * 关于页面Fragment（继承PreferenceFragment）
+     *  - 点击事件（直接intent实现）
+     */
     public static class AboutFragment extends PreferenceFragment implements Preference.OnPreferenceClickListener {
         private Preference mVersion;
         private Preference mStar;
@@ -29,9 +38,11 @@ public class AboutActivity extends BaseActivity {
         @Override
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
+
+            //导入Preferences的布局文件
             addPreferencesFromResource(R.xml.preference_about);
             
-            mVersion = findPreference("version");//必须先获取数据再修改，因为直接修改会报错“变量没有初始化”
+            mVersion = findPreference("version");
             mStar = findPreference("star");
             mYouxiang = findPreference("youxiang");
             mBoke = findPreference("boke");
@@ -43,12 +54,10 @@ public class AboutActivity extends BaseActivity {
 
         private void setListener() {
             mStar.setOnPreferenceClickListener(this);
-//            mYouxiang.setOnPreferenceClickListener(this);
             mBoke.setOnPreferenceClickListener(this);
             mGithub.setOnPreferenceClickListener(this);
         }
 
-        //TODO:加上点击发送邮件功能
         @Override
         public boolean onPreferenceClick(Preference preference) {
            if (preference == mStar) {

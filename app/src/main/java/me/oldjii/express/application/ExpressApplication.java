@@ -5,6 +5,8 @@ import android.app.Application;
 /**
  * Created by oldjii on 2019/4
  */
+
+//单例
 public class ExpressApplication extends Application {
     private static ExpressApplication sInstance;
 

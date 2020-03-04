@@ -17,6 +17,13 @@ import me.oldjii.express.R;
 import me.oldjii.express.utils.PermissionReq;
 import me.oldjii.express.utils.binding.ViewBinder;
 
+/**
+ * Activity基类
+ *  - 配置沉浸式状态栏
+ *  - setContentView
+ *  - onOptionsItemSelected
+ *  - 绑定ViewBinder
+ */
 public abstract class BaseActivity extends AppCompatActivity {
     protected Handler handler;
 
@@ -26,6 +33,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
         handler = new Handler(Looper.getMainLooper());
 
+        //配置沉浸式状态栏
         if (shouldSetStatusBarColor() && Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             SystemBarTintManager tintManager = new SystemBarTintManager(this);
             tintManager.setStatusBarTintEnabled(true);
@@ -55,6 +63,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         ViewBinder.bind(this);
     }
 
+    //监听菜单栏
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {

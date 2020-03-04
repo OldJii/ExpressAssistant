@@ -6,7 +6,7 @@ import android.view.View;
 import java.lang.reflect.Field;
 
 /**
- * 利用了大量Java反射的知识，避免在代码中写大量的findviewbyid()的重复代码
+ * 利用了Java反射，避免在代码中写大量的findviewbyid()的重复代码
  */
 
 public class ViewBinder {

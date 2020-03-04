@@ -58,6 +58,7 @@ public class RAdapter<T> extends RecyclerView.Adapter<RViewHolder<T>> {
         return dataList.size();
     }
 
+    //告诉RecyclerView在第几个position展示哪种布局
     @Override
     public int getItemViewType(int position) {
         Class<? extends RViewHolder<T>> clazz = delegate.getViewHolderClass(position);
