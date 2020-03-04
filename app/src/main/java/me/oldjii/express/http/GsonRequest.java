@@ -11,7 +11,7 @@ import java.io.UnsupportedEncodingException;
 
 /**
  * 真正执行get请求的类
- *
+ * 自己写的Volley的GsonRequest，因为框架本身并没有提供对Gson的支持
  */
 public class GsonRequest<T> extends Request<T> {
     private Class<T> mClass;

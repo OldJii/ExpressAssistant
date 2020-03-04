@@ -34,6 +34,7 @@ public class DataManager {
         }
     }
 
+    //更新数据，dao.createOrUpdate();
     public void updateHistory(SearchInfo searchInfo) {
         try {
             History history;

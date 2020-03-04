@@ -20,6 +20,7 @@ import me.oldjii.express.model.SuggestionResult;
 /**
  * Created by oldjii on 2019/4
  */
+//使用Volley
 public class HttpClient {
     private static final String BASE_URL = "https://www.kuaidi100.com";
     private static final String HEADER_REFERER = "Referer";

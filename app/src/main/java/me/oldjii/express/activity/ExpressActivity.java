@@ -107,6 +107,7 @@ public class ExpressActivity extends BaseActivity implements OnClickListener, Na
                 .result(new PermissionReq.Result() {
                     @Override
                     public void onGranted() {
+                        //调用Zxing库的CaptureActivity.start()打开相机并进行扫码操作
                         CaptureActivity.start(ExpressActivity.this, false, 0);
                     }
 
