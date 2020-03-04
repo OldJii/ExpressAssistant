@@ -35,7 +35,7 @@ public static void query(String type, String postId, final HttpCallback<SearchRe
 
 ## 作者
 博客：jiguankai.cn<br>
-邮箱：oldjii@outlook.com
+邮箱：mail@jiguankai.cn
 
 ## License
 
